@@ -593,9 +593,56 @@
         echo "<br/><br/>";
     ?>
 
-    <h4></h4>
+    <h4>sort() = sorting by index / rsort() = reversing by index</h4>
 
-    <?php?>
+    <?php
+        $users = ['James' => 23,'Josha' => 43, 'Author' => 53];
+        sort($users);
+        print_r($users);
+        echo "<br/><br/>";
+
+        $users =["San Di" => 23, "Bro" => 43, "Author" => 53];
+        rsort($users);
+        print_r($users);
+        echo "<br/><br/>";
+    ?>
+
+
+    <hr>
+
+    <h4>ksort() = sorting by value / krsort() = reversing by value</h4>
+
+    <?php
+        $users =["San Di" => 23, "Bro" => 43, "Author" => 53];
+        ksort($users);
+        print_r($users);
+        echo "<br/><br/>";
+
+        $users =["San Di" => 23, "Bro" => 43, "Author" => 53];
+        krsort($users);
+        print_r($users);
+        echo "<br/><br/>";
+    ?>
+
+
+    <h4>explode(" ",string variable) = Converting string to array / implode(" ",exploade variable) = Recoverting array to string </h4>
+
+    <?php
+        $val = "The furious nine movie";
+        $arr = explode(" ", $val);
+        print_r($arr);
+        echo "<br/><br/>";
+
+        $str = implode(" ",$arr);
+        echo $str;
+        echo "<br/>";
+        print_r($str);
+        echo "<br/><br/>";
+    ?>
+
+    <hr>
+
+
 
 
 
