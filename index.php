@@ -642,8 +642,798 @@
 
     <hr>
 
+    <h2>Operators</h2>
+
+    <h4>Arithmetic operators</h4>
+
+    <?php
+    
+        /*
+          +,-,*,/
+         */
+
+         #Addition
+         $numOne = 12;
+         $numTwo = 32;
+         echo $numOne + $numTwo;
+         echo "<br/><br/>";
+
+         #Subtraction
+         $numOne = 120;
+         $numTwo = 32;
+         echo $numOne - $numTwo;
+         echo "<br/><br/>";
+
+         #Multiplication
+         $numOne = 12;
+         $numTwo = 32;
+         echo $numOne * $numTwo;
+         echo "<br/><br/>";
+
+         #Division
+         $numOne = 120;
+         $numTwo = 32;
+         echo $numOne / $numTwo;
+         echo "<br/><br/>";
+
+         #Modulus
+         $numOne = 100;
+         $numTwo = 32;
+         echo $numOne % $numTwo;
+         echo "<br/><br/>";
+
+         #Exponentiation
+         $numOne = 10;
+         $numTwo = 3;
+         echo $numOne ** $numTwo;
+         echo "<br/><br/>";
+
+         $numOne = 11;
+         $numTwo = 3;
+         echo $numOne ** $numTwo;
+         echo "<br/><br/>";
+
+         #Dot Operator
+
+         $hello = "Hello";
+         $world = "the people around the world";
+         echo $hello . " " . $world;
+         echo "<br/><br/>";
+         echo "$hello $world";
+         echo "<br/><br/>";
+
+         $fruits = ['Pineapple','Mengo'];
+         echo $fruits[0] . " and " . $fruits[1];
+         echo "<br/><br/>";
+         echo $fruits[0] , " and " , $fruits[1];
+    ?>
+
+    <hr>
+
+    <h4>Assignment operators</h4>
+
+    <?php
+        # = - define value
+        # += - combine value
+        # -= - 
+        # *= - 
+        # /= - 
+        # %= -
+        
+
+        $numOne = 12;
+        $numOne += 12;
+        echo $numOne;
+        echo "<br/><br/>";
+
+        $numOne = 122;
+        $numOne -= 12;
+        echo $numOne;
+        echo "<br/><br/>";
+
+        $numOne = 23;
+        $numOne *= 5;
+        echo $numOne;
+        echo "<br/><br/>";
+
+        $numOne = 23;
+        $numOne /= 5;
+        echo $numOne;
+        echo "<br/><br/>";
+
+        $numOne = 23;
+        $numOne %= 5;
+        echo $numOne;
+        echo "<br/><br/>";
+        
+    ?>
 
 
+    <h4>Comparison operators</h4>
+
+    <?php
+    
+        # ==    -   Equal
+        # ===   -   Identical - with data type
+        # !=    -   Not equal
+        # <>    -   Not equal
+        # !==   -   Not identical - With data type
+        # >     -   Greater than
+        # <     -   Less than
+        # >=    -   Greater than or equal to
+        # <=    -   Less than or equal to
+        # <=>   -   Spaceship
+
+        $numOne = 12;
+        $numTwo = "12";
+        var_dump($numOne == $numTwo);
+        echo "<br/><br/>";
+
+        $numOne = 12;
+        $numTwo = 12;
+        var_dump($numOne == $numTwo);
+        echo "<br/><br/>";
+
+        $numOne = 12;
+        $numTwo = "12";
+        var_dump($numOne === $numTwo);
+        echo "<br/><br/>";
+
+        $numOne = 12;
+        $numTwo = 12;
+        var_dump($numOne === $numTwo);
+        echo "<br/><br/>";
+
+        $numOne = 12;
+        $numTwo = "12";
+        var_dump($numOne != $numTwo);
+        echo "<br/><br/>";
+
+        $numOne = 12;
+        $numTwo = 12;
+        var_dump($numOne != $numTwo);
+        echo "<br/><br/>";
+
+        $numOne = 12;
+        $numTwo = "12";
+        var_dump($numOne <> $numTwo);
+        echo "<br/><br/>";
+
+        $numOne = 12;
+        $numTwo = 12;
+        var_dump($numOne <> $numTwo);
+        echo "<br/><br/>";
+
+        $numOne = 12;
+        $numTwo = "12";
+        var_dump($numOne !== $numTwo);
+        echo "<br/><br/>";
+
+        $numOne = 12;
+        $numTwo = 12;
+        var_dump($numOne !== $numTwo);
+        echo "<br/><br/>";
+
+        $numOne = 190;
+        $numTwo = 12;
+        var_dump($numOne > $numTwo);
+        echo "<br/><br/>";
+
+        $numOne = 190;
+        $numTwo = 12;
+        var_dump($numOne < $numTwo);
+        echo "<br/><br/>";
+
+        $numOne = 12;
+        $numTwo = 12;
+        var_dump($numOne >= $numTwo);
+        echo "<br/><br/>";
+
+        $numOne = 12;
+        $numTwo = 12;
+        var_dump($numOne <= $numTwo);
+        echo "<br/><br/>";
+
+
+        # Spaceship - less than = -1 / equal = 0 / greater than = 1
+
+        $numOne = 10;
+        $numTwo = 12;
+        var_dump($numOne <=> $numTwo);
+        echo "<br/><br/>";
+
+        $numOne = 12;
+        $numTwo = 12;
+        var_dump($numOne <=> $numTwo);
+        echo "<br/><br/>";
+
+        $numOne = 13;
+        $numTwo = 12;
+        var_dump($numOne <=> $numTwo);
+        echo "<br/><br/>";
+    ?>
+
+    <hr>
+
+
+    <h4>Increment/Decrement operators</h4>
+
+    <?php
+
+    /*
+        ++, --
+    */
+         $num = 13;
+         echo ++$num;
+         echo "<br/><br/>";
+
+         $num = 13;
+         echo $num++;
+         echo "<br/><br/>";
+
+         $numOne = 20;
+         $numTwo = $numOne++;
+         echo $numOne . "<br/><br/>";
+         echo $numTwo;
+         echo "<br/><br>";
+
+         $numOne = 20;
+         $numTwo = ++$numOne;
+         echo $numOne . "<br/><br/>";
+         echo $numTwo;
+         echo "<br/><br>";
+         
+
+         $num = 13;
+         echo --$num;
+         echo "<br/><br/>";
+
+         $num = 13;
+         echo $num--;
+         echo "<br/><br/>";
+
+        
+
+         $numOne = 20;
+         $numTwo = --$numOne;
+         echo $numOne . "<br/><br/>";
+         echo $numTwo;
+         echo "<br/><br>";
+
+         $numOne = 20;
+         $numTwo = $numOne--;
+         echo $numOne . "<br/><br/>";
+         echo $numTwo;
+         echo "<br/><br>";
+
+         
+    ?>
+
+    <hr>
+
+    <h4>Logical operators</h4>
+
+    <?php
+    
+        /*
+            and     =   And
+            or      =   Or     
+            xor     =   Xor (one equal = true / two equal = false)
+            &&      =   And 
+            ||      =   Or 
+            !       =   Not
+        */
+
+        
+        $numOne = 13;
+        $numTwo = 12;
+        if($numOne == 13 and $numTwo == 12){
+            echo "Hey,Bae";
+        }
+        echo "<br/><br/>";
+
+        # true
+        $numOne = 13;
+        $numTwo = 12;
+        if($numOne == 13 or $numTwo == 100){
+            echo "Hey,Bae";
+        }
+        echo "<br/><br/>";
+
+      
+         # true
+        $numOne = 13;
+        $numTwo = 12;
+        if($numOne == 13 or $numTwo == 12){
+            echo "Hey,Bae";
+        }
+        echo "<br/><br/>";
+
+       
+        # true
+        $numOne = 13;
+        $numTwo = 12;
+        if($numOne == 13 xor $numTwo == 100){
+            echo "Hey,Bae";
+        }
+        echo "<br/><br/>";
+        
+        # false
+        $numOne = 13;
+        $numTwo = 12;
+        if($numOne == 13 xor $numTwo == 12){
+            echo "Hey,wrong operators";
+        }
+        echo "<br/><br/>";
+
+        $numOne = 13;
+        $numTwo = 12;
+        if($numOne == 13 && $numTwo == 12){
+            echo "Hey,Bae";
+        }
+        echo "<br/><br/>";
+
+        $numOne = 13;
+        $numTwo = 12;
+        if($numOne == 13 || $numTwo == 80){
+            echo "Hey,Bae";
+        }
+        echo "<br/><br/>";
+
+
+        $num = 13;
+        if($num !== 45){
+            echo "Hey,Bae";
+        }
+        echo "<br/><br/>";
+
+
+    ?>
+
+
+    <hr>
+
+    <h4>String operators</h4>
+
+    <?php
+    
+        $textOne = "Gt to";
+        $textTwo = "school";
+        echo $textOne . " " . $textTwo;
+        echo "<br/><br/>";
+
+        $textOne = "Gt to";
+        $textTwo = " school";
+        echo $textOne .= $textTwo;
+        echo "<br/><br/>";
+
+
+    ?>
+
+    <hr>
+
+    <h4>Ternary Operator</h4>
+
+    <?php
+        # condition ? true : false
+        $name = "";
+        echo $name ? $name : "Unknown";
+
+        echo "<br/><br/>";
+
+        $name = "Khun Tun";
+        echo $name ? $name : "Unknown";
+
+        echo "<br/><br/>";
+
+        
+        $status = (empty($user)) ? "anonymous" : "logged in";
+        echo $status;
+        echo "<br/><br/>";
+
+        $user = "Baby";
+        $status = (empty($user)) ? "anonymous" : "logged in";
+        echo $status;
+        echo "<br/><br/>";
+
+        #Short hand syntax = ?:
+        $user = "";
+        echo $user ?: "anonymous";
+        echo "<br/><br/>";
+
+        $user = "Khun Tun";
+        echo $user ?: "anonymous";
+        echo "<br/><br/>";
+
+        echo isset($userLog) ? $userLog : "Unknown user";
+        echo "<br/><br/>";
+
+        $user = "JB";
+        echo $user ? $user : "Unknown user";
+        echo "<br/><br/>";
+    ?>
+
+    <hr>
+
+    <h4>Null Coalescing Assignment Operator</h4>
+
+    <?php
+
+        # ?? 
+
+        $result = "Boby";
+        $result ??= $name;
+        echo $result;
+        echo "<br/><br/>";
+
+        echo $user = $_GET["user"] ?? "anonymous";
+        echo "<br/><br/>";
+
+        echo $color = $color ?? "red";
+
+        echo "<br/><br/>";
+
+        echo $trees ?? "banana tree"; 
+
+    ?>
+
+    <hr>
+
+    <h2>Conditional Statement - Control structure</h2>
+
+    <h4>if Statement</h4>
+
+    <?php
+        /*
+            if(){
+
+            }else{
+
+            }
+
+            * One Statement
+            if() echo
+            else echo
+
+            * Alternative - common used php and HTML syntax
+            if() :
+                echo
+            else :
+                echo
+            endif;
+
+            * elseif
+            if(){
+                
+            }elseif(){    = PHP syntax - elseif / JS syntax - else if
+
+            }else{
+
+            }
+        */
+
+        $time = date("H");
+        if($time > 7 and $time < 19){
+            echo "Day Time.";
+        }else{
+            echo "Night Time.";
+        }
+
+        echo "<br/><br/>";
+
+        if($time > 5 && $time < 17) echo "Have a good day !";
+        else echo "Have a good night !";
+
+        echo "<br/><br/>";
+
+        if($time > 4 && $time < 14) :
+            echo "Beautiful Day.";
+        else :
+            echo "Beautiful Night.";
+        endif;
+
+        echo "<br/><br/>";
+
+        $day = date("D");
+
+        if($day === "Sun"){
+            echo "Today is Sunday";
+        }elseif($day === "Sat"){
+            echo "Today is Sataurday";
+        }else{
+            echo "Today is a week day";
+        }
+
+        echo "<br/><br/>";
+
+    ?>
+
+    <hr>
+
+    <h4>Switch Statement</h4>
+
+    <?php
+    
+        /*
+            switch(){
+                case "state-1" :
+                    break;
+                case "state-2" :
+                    break;
+                default:    
+            }
+         */
+
+         $day = date("D");
+
+         switch($day){
+            case "Sun" :
+            case  "Sat" :
+                echo "Weekend";
+                break;
+            case "Fri" :
+                echo "TGIF";
+                break;
+            default:
+            echo "weekday";
+         }
+
+         echo "<br/><br/>";
+
+         $myFavColor = "purple";
+
+         switch($myFavColor){
+            case "purple" :
+                echo "My Favorite color is purple !";
+                break;
+            case "blue" :
+                echo "My Favorite color is blue !";
+                break;
+            case "green" :
+                echo "My Favorite color is green !";
+                break;
+            default:
+            echo "My Favorite color is neither purple, blue, nor green !";
+         }
+
+         echo "<br/><br/>";
+
+         /*
+            * match expression
+
+            match(){
+                "statement" => "statement",
+                "statement" => "statement",
+                default => "statement";
+            }
+         */
+
+         $day = date("D");
+
+         $result = match($day){
+            "Sat", "Sun" => "Weekend",
+            "Fri" => "TGIF",
+            default => "weekday"
+         };
+
+         echo $result;
+
+         echo "<br/><br/>";
+
+         $sub = "PHP";
+
+         $val = match($sub){
+            "HTML" => "HTML Course",
+            "CSS" => "CSS Course",
+            "PHP" => "PHP Course",
+            "JavaScript" => "JS Course",
+            "WebDev" => "Complete Web Development"
+         };
+
+         var_dump($val);
+         echo "<br/><br/>";
+         echo "$val";
+         echo "<br/><br/>";
+
+         /*
+            * Tips About switch & match * 
+            To compare value-------
+            switch use == (double equal) while match use === (triple equal)
+
+         */
+    ?>
+
+    <hr>
+
+
+    <h2>Loop In PHP</h2>
+
+    <h4>While Loop</h4>
+
+    <?php
+        /*
+            while(condition is true){
+
+            }
+        */
+
+        $num = 1;
+
+        while($num <= 10){
+            echo "The number is : $num <br/>";
+            $num++;
+        }
+
+        echo "<br/><br/>";
+
+        $num = 0;
+
+        while($num <= 100){
+            echo "The Number is : $num <br/>";
+            $num+=10;
+        }
+
+        echo "<br/><br/>";
+
+        $nums = [12,34,-2,8,456];
+        $i = 0;
+        $result = 0;
+
+        while($i < count($nums)){
+            $result += $nums[$i];
+            $i++;
+        }
+
+        echo $result; # 508
+
+        echo "<br/><br/>";
+
+        echo array_sum($nums); # 508
+
+        echo "<br/><br/>";     
+    ?>
+
+    <hr>
+
+    <h4>Do While Loop</h4>
+
+    <?php
+            /*
+                do {
+
+                } while (condition is true);
+            */
+
+            $number = 1;
+
+            do{
+                echo "The Number is : $number <br/>";
+                $number++;
+            } while ($number <= 5);
+
+            echo "<br/><br/>";
+
+            $number = 6;
+
+            do{
+                echo "The Number is : $number <br/>";
+                $number++;
+            }while($number <= 5);
+
+            echo "<br/><br/>";
+    ?>
+
+    <hr>
+
+    <h4>For Loop</h4>
+
+    <?php
+        /*
+            for(init counter, test counter , increment counter){
+
+            }
+        */
+
+        for($i = 0; $i <= 10; $i++){    
+            echo "The Number is : $i <br/>";
+        }
+
+        echo "<br/><br/>";
+
+        for($x = 0; $x <= 100; $x+=10){
+            echo "The Number is $x <br/>";
+        }
+
+        echo "<br/><br/>";
+    ?>
+
+    <hr>
+
+    <h4>Foreach Loop</h4>
+
+    <?php
+        /*
+            foreach($arrays as $value){     = JS - forEach / PHP - foreach
+
+            }
+        */
+
+        $fruits = ["banana","mengo","strawbery","apple"];
+        foreach($fruits as $fruit){
+            echo "$fruit <br/>";
+        }
+
+        echo "<br/><br/>";
+
+        $age = ["Khun Tun " => 20, "JB" => 18, "Elizabeth" => 23,"Anna" => 20];
+        foreach($age as $key => $val){
+            echo "$key = $val <br/>";
+        }
+
+        echo "<br/><br/>";
+    ?>
+
+    <hr>
+
+    <h4>Break & Continue</h4>
+
+    <?php
+    
+        for($i = 0; $i < 10; $i++){
+            if($i == 5){
+                break;
+            }
+            echo "The Number is : $i <br/>";
+        }
+
+        echo "<br/><br/>";
+
+        $nums = [12,34,-2,8,456];
+
+        $i = 0;
+        $result = 0;
+
+        while($i < count($nums)){
+            if($nums[$i] < 0) break;
+
+            $result += $nums[$i];
+            $i++;   
+        }
+
+        echo $result; # 46 - break when minus value is turn.
+
+        echo "<br/><br/>";
+
+        for($y = 0; $y < 10; $y++){
+            if($y == 6){
+                continue;
+            }
+
+            echo "The Number is : $y <br/>";
+        }
+
+        echo "<br/><br/>";
+
+        $nums = [12,34,-2,8,456];
+
+        $i = 0;
+        $result = 0;
+
+        while($i < count($nums)){
+            if($nums[$i] < 0){
+                $i++;
+                continue;
+            }
+
+            $result += $nums[$i];
+            $i++;
+
+        }
+
+        echo $result; # 510 - adding value without minus value
+
+
+    ?>
 
 
 
