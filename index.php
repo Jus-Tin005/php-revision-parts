@@ -2036,6 +2036,8 @@
             # final
             # abstract  =   method and abstract method
             # interface =   abstract method
+            # trait = accept multiple classes - ( can use methods, abstract method and any access modifier)
+            # const statement
         */
 
         class Animal{
@@ -2556,8 +2558,42 @@
          echo "<br><br>";
 
 
+
+         interface Amphibians {
+            public function moving();
+         }
+
+         class Frog implements Amphibians {
+            public function moving(){
+                echo "The frog is moving in the water.";
+            }
+         }
+
+
+         class Toad implements Amphibians {
+            public function moving(){
+                echo "The toad is running in the grass.";
+            }
+         }
+
+         function performance(Amphibians $obj){
+            $obj->moving();
+         }
+
+         performance(new Frog);
+         performance(new Toad);
+
+
+         # The frog is moving in the water.The toad is running in the grass.
+
+
+         echo "<br><br>";
+
+
+
+
          interface BabyAnimal{
-            public function makeSound();
+            public function makeSound(); # no need abstract keyword in interface
          }
 
          class BabyCat implements BabyAnimal {
@@ -2606,6 +2642,194 @@
             $animal->sweetSound();
          }
 
+         # Meee Meow Woof...Woof Squeak
+
+
+         echo "<br><br>";
+
+         /*
+            PHP allow multiple interface while does not allow multiple inheritance
+         */
+
+         # Multiple Interface
+
+         interface MyMammals{
+            public function hunt();
+         }
+
+         interface Lion{
+            public function attack();
+         }
+
+         class Tiger implements MyMammals, Lion {
+            public function hunt(){
+                echo "A tiger is hunting a dear in the forest.";
+            }
+
+            public function attack(){
+                return true;
+            }
+         }
+
+         $object = new Tiger();
+         $object->hunt();
+         $object->attack();
+
+         # A tiger is hunting a dear in the forest.
+
+         echo "<br><br>";
+
+         # Trait
+
+         /*
+            * Syntax
+
+            trait traitName {
+                codes............
+            }
+
+             class className {
+                use traitName;
+            }
+         */
+
+
+         # single trait
+
+         trait msgOne {
+            public function myMsgOne(){
+                echo "The story sounds funny !";
+            }
+         }
+
+         class Greeting {
+            use msgOne;
+         }
+
+         $object = new Greeting();
+         $object->myMsgOne();
+
+
+         # The story sounds funny !
+
+         echo "<br><br>";
+
+          # multipe trait
+
+          trait bookOne {
+            public function storeOne(){
+                echo "You can borrow story book in the library.";
+            }
+          }
+
+          trait bookTwo {
+            public function storeTwo(){
+                echo "Give me back my book tomorrow.";
+            }
+          }
+
+          class libraryOne{
+            use bookOne;
+          }
+
+          class libraryTwo {
+            use bookOne,bookTwo;
+          }
+
+          $objectOne = new libraryOne();
+          $objectOne->storeOne();
+          echo "<br/>";
+
+          $objectTwo = new libraryTwo();
+          $objectTwo->storeOne();
+          $objectTwo->storeTwo();
+
+
+          # You can borrow story book in the library.
+          # Give me back my book tomorrow.
+
+          echo "<br><br>";
+
+          trait Math {
+            public function add($x,$y){
+                echo $x + $y;
+            }
+          }
+
+          trait Area {
+            private $PI = 23.23;
+
+            public function circle($i){
+                echo $this->PI * $i * $i;
+                /*
+                    23.23×5  = 116.15
+                    116.15x5 = 580.75
+                */
+            }
+          }
+
+          class Calculation {
+            use Math,Area;
+          }
+
+          $calc = new Calculation;
+          $calc->add(23,54); # 77
+          echo "<br/>";
+          $calc->circle(5);  # 580.75
+
+
+          echo "<br><br>";
+
+
+          # const
+          /*
+            no need $ in constant statement. constant only must be inside class constant not trait constant.
+            class constant is totally static member.And so, must use ::(Double colon operator)
+          */
+
+          class MyArea {
+            const PI = 22.22;
+
+            public function myCircle($d){
+                echo $this->PI * $d * $d;
+            }
+          }
+
+          echo MyArea::PI;  # 22.22
+
+          echo "<br><br>";
+
+    ?>
+
+
+    <hr>
+
+
+    <h2>Magic Methods - 17 = Not recommended (Just Knowledge)</h2>
+
+    <?php
+    
+          
+          /*
+
+                a. __construct()
+                b. __destruct()
+                c. __call()
+                d. __callStatic()
+                e. __invoke()
+                f. __set()
+                g. __get()
+                h. __toString()
+                i. __debugInfo()
+                j. __isset()
+                k. __unset()
+                l. __sleep()
+                m. __wakeup()
+                n. __set_state()
+                o. __clone()
+                p. __serialize
+                q. __unserialize
+          */
 
     ?>
 
