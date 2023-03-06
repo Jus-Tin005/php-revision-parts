@@ -1301,7 +1301,7 @@
             /*
                 do {
 
-                } while (condition is true);
+                } while (condition is true); = working first time,then checking condition
             */
 
             $number = 1;
@@ -1319,6 +1319,20 @@
                 echo "The Number is : $number <br/>";
                 $number++;
             }while($number <= 5);
+
+            echo "<br/><br/>";
+
+            $nums = [12,45,-4,8,906];
+
+            $i  =   0;
+            $result = 0;
+
+            do{
+                $result += $nums[$i];
+                $i++;
+            }while($i < count($nums));
+
+            echo $result; # 967
 
             echo "<br/><br/>";
     ?>
@@ -1345,6 +1359,18 @@
         }
 
         echo "<br/><br/>";
+
+        $nums = [12,45,-4,8,906];
+
+        $result = 0;
+
+        for($i = 0; $i < count($nums); $i++){
+            $result += $nums[$i]; 
+        }
+
+        echo $result; # 967
+
+        echo "<br/><br/>";
     ?>
 
     <hr>
@@ -1365,12 +1391,40 @@
 
         echo "<br/><br/>";
 
+        
+        $nums = [12,45,-4,8,906];
+
+        $result = 0;
+
+        foreach($nums as $num){
+            $result += $num;
+        }
+
+        echo $result; # 967
+
+        echo "<br/><br/>";
+
         $age = ["Khun Tun " => 20, "JB" => 18, "Elizabeth" => 23,"Anna" => 20];
         foreach($age as $key => $val){
             echo "$key = $val <br/>";
         }
 
         echo "<br/><br/>";
+
+        $user = ["alice" => 32, "boby" => 34];
+
+        $result = [];
+        
+        foreach($user as $key => $val){
+            $result[] = $key;
+            // $result[] = $val;
+        }
+
+        print_r($result);
+        echo "<br/><br/>";
+        print_r(array_keys($user));
+        
+
     ?>
 
     <hr>
@@ -1431,6 +1485,1126 @@
         }
 
         echo $result; # 510 - adding value without minus value
+
+         /*
+            Tips about break &continue
+            can add argument after break & continue = break 1, break 2 etc. 1 is default
+        */
+
+
+    ?>
+    
+
+    <hr>
+
+    <h2>Functions</h2>
+
+    <h4>Call Back function</h4>
+
+    <?php
+        function writeMsg(){
+            echo "Good Morning";
+        }
+        writeMsg();
+
+        echo "<br/><br/>";
+    ?>
+
+    <hr>
+
+    <h4>Function Argument</h4>
+
+    <?php
+
+        # Single Argument
+        function familyName($fName){
+            echo "$fName Justin. <br/>";
+        }
+
+        familyName("Jeni");
+        familyName("Huge");
+        familyName("Salash");
+        familyName("Greegie");
+        familyName("kai Jim");
+        familyName("Boss");
+        familyName("Abuda");
+
+        echo "<br/><br/>";
+
+           # Multiple Argument
+        function myFamilyName($fName, $year){
+            echo "$fName Justin. Born in $year.<br/>";
+        }
+
+        myFamilyName("Jeni","1995");
+        myFamilyName("Boss","1998");
+        myFamilyName("Abuda","1990");
+
+        echo "<br/><br/>";
+
+        function add($a,$b){
+            echo $a + $b;
+        }
+
+        # error
+        // add(10);
+
+        add(10,34); # 44
+        echo "<br/><br/>";
+        add(10,34,45); # 44
+
+    ?>
+
+    <hr>
+
+    <h4>Without using strict = PHP-8+</h4>
+
+    <?php
+
+        # no need to strict type 8+
+
+        function addNum(int $numOne , int $numTwo){
+            return $numOne + $numTwo;
+        }
+        echo addNum(10, 10); # 20
+
+        echo "<br/><br/>";
+
+        function addNumbers(int $numOne , int $numTwo){
+            return $numOne + $numTwo;
+        }
+        # error
+        // echo addNumbers(10, "10 days"); 
+
+        echo "<br/><br/>";
+    ?>
+
+    <hr>
+
+    <h4>Using with strict = PHP-7</h4>
+
+    <?php
+        declare(strict_type=1);
+
+        function myFunNum(int $numOne, int $numTwo){
+            return $numOne + $numTwo;
+        }
+        // echo myFunNum(23,23);
+
+        #error 
+        // echo myFunNum(23,"23 days");
+        echo "<br/><br/>";
+    ?>
+
+    <hr>
+
+    <h4>Default Argument</h4>
+
+    <?php
+        function setHeight(int $minHeight = 100){
+            echo "The height is : $minHeight <br/>";
+        }
+
+        setHeight(450);
+        setHeight(500);
+        setHeight(459);
+        setHeight();  # default value
+
+        echo "<br/><br/>";
+    ?>
+
+    <hr>
+
+    <h4>Returning Value - PHP-8+</h4>
+
+    <?php
+        function sum(int $numOne, int $numTwo){
+            $nums = $numOne + $numTwo;
+            return $nums;
+        }
+
+        echo "23 + 24 = " . sum(23,24) . "<br/>";
+        echo "45 + 46 = " . sum(45,46) . "<br/>";
+        echo "21 + 22 = " . sum(21,22) . "<br/>";
+
+        echo "<br/><br/>";
+
+        function myTurn($a,$b){
+            return $a + $b;
+        }
+
+        $result = myTurn(23,34); # NULL = if return statement has not, PHP function returns NULL as a default.
+        echo myTurn(23,34); # 57
+    ?>
+
+    <hr>
+
+    <h4>Return Type Declaration (Type Hinting) - PHP-8+</h4>
+
+    <?php 
+
+    
+
+    /*
+        function fName(datatype val,datatype val,) : datatype{
+            return
+        }
+    */
+        function calculator(float $numOne, float $numTwo) : float{
+            return $numOne + $numTwo;
+        }
+
+        echo calculator(123,1243); # 1366
+        echo "<br/><br/>";
+        echo calculator(2.4,4.5); # 6.9
+        echo "<br/><br/>";
+        echo calculator("123","1243"); # 1366
+        echo "<br/><br/>";
+        echo calculator("2.4","4.5"); # 6.9
+
+
+        echo "<br/><br/>";
+
+
+
+        /*
+            Scalar Type Hinting
+        */
+
+        # Method-1
+        function myAdd($nums) {
+            return array_sum($nums);
+        }
+
+        # error
+        // echo myAdd(12,34);
+
+        echo "<br/><br/>";
+
+        # Method-2
+
+        function myAddingNum(Array $nums){
+            return array_sum($nums);
+        }
+
+        #error
+        // echo myAddingNum(12,34);
+
+
+        /*
+            Return Type Hinting 
+        */
+
+        
+
+        function addingValue(Array $nums) : float {
+            # error = no return value = NULL
+            // echo array_sum($nums); 
+
+            return array_sum($nums); 
+        }
+
+        # error
+        // addingValue([23,56]);
+
+        addingValue([23,56]);  # NULL
+
+        echo "<br/><br/>";
+
+        /*
+            Union Type Hinting = multiple hinting
+        */
+
+        function myUnion(int | float $price){
+            return "Price is \$$price";
+        }
+
+        echo myUnion(3.2) . "<br/>";
+        echo myUnion(23);
+    ?>
+
+
+    <hr>
+
+    <h4>Passing Argument by Value (PHP default) = Just pass value of variable,not all of variable(the variable inside and outside of function)</h4>
+
+    <?php
+        $name = "Khun Tun";
+
+        function myName($n){
+            $n = "Jus Tin";
+            echo "Hi $n";
+        }
+
+        myName($name);  # Hi Jus Tin
+        echo "<br/>";
+        echo $name;     # Khun Tun
+
+        echo "<br/><br/>";
+    ?>
+
+    <hr>
+
+    <h4>Passing Argument by Reference = &(Reference Operator) - (pass all of variable.It will effect original variable whenever variable in function change.)</h4>
+
+    <?php
+        function add_five(&$value){
+            $value += 23;
+        }
+        $num = 21;
+        add_five($num);
+        echo $num; # 44
+
+        echo "<br/><br/>";
+
+        $name = "Khun Tun";
+
+        function helloKhun(&$n){
+            $n = "Jus Tin";
+            echo "Hi $n";
+        }
+
+        helloKhun($name);   # Hi Jus Tin
+        echo "<br/>";
+        echo $name;         # Jus Tin
+    ?>
+
+
+    <hr>
+
+    <h4>Rest Parameter</h4>
+
+    <?php
+        function smallBaby($numOne, ...$numTwo){
+            print_r($numOne); 
+            echo "<br/>";
+            print_r($numTwo); 
+        }
+
+        smallBaby(10,20,30,40);
+        /*
+            10
+            Array ( [0] => 20 [1] => 30 [2] => 40 )
+        */
+
+        # Old Rest Parameter Syntax
+
+
+        echo "<br/><br/>";
+
+        function oldPara(){
+            $argument = func_get_args();
+            print_r($argument);
+        }
+        oldPara(10,20,30,40);
+
+        /*
+            Array ( [0] => 10 [1] => 20 [2] => 30 [3] => 40 )
+        */
+    ?>
+
+    <hr>
+
+    <h4>Function Global Scope</h4>
+
+    <?php
+    
+        function one(){
+            $nickName = "one";
+        }
+
+        # Error
+        one();
+        // echo $nickName;
+
+        echo "<br/><br/>";
+
+        function two(){
+            function three(){
+                echo "Three";
+            }
+        }
+
+        two();
+        three();
+
+        echo "<br/><br/>";
+
+        # Global Variable
+
+        $myName = "JS";
+
+        function myNickname(){
+            echo "Hi $myNickname !";
+        }
+
+        # error
+        // myNickname(); 
+
+        $babyName = "cuty";
+        function myCuty(){
+            global $babyName;
+            echo "Hi $babyName";
+        }
+        myCuty();
+
+        echo "<br/><br/>";
+
+        function cuty(){
+            global $babyName;
+            $babyName = "baby boss";
+        }
+        cuty();
+        echo $babyName;
+
+        echo "<br/><br/>";
+
+    ?>
+
+    <hr>
+
+    <h4>Variable Function</h4>
+
+    <?php
+        function ababa($x,$y){
+            echo $x + $y;
+        }
+
+        $name = "ababa";
+        $name(200,500); # 700
+
+        echo "<br/><br/>";
+    ?>
+
+    <hr>
+
+    <h4>Function Expression - Nameless Function or Anonymous Function</h4>
+
+    <?php
+
+        # Call Back function
+
+        $nums = [10,20,30,40];
+
+        function mister($n){
+            return $n * 5;
+        }
+
+        # array_map(call back, array);
+
+        $result = array_map("mister", $nums);
+        print_r($result);
+
+        echo "<br/><br/>";
+
+
+        # Nameless Function
+
+        $nums = [10,20,30,40];
+
+        $result = array_map(function($n){
+            return $n * 5;
+        }, $nums);
+
+        print_r($result);
+
+        echo "<br/><br/>";
+
+        # Assign Function expression into variable
+
+        $highTech = function($n){
+            echo $n * 5;
+        };
+
+        $highTech(20);  # 200
+
+        echo "<br/><br/>";
+
+        # use Statement in Function Expression
+
+        $name = "JS";
+        $hi = function() use ($name) {
+            echo "Hello $name";
+        };
+        $hi();      # Hello JS
+
+        echo "<br/><br/>";
+
+        # the original variable value does not change
+
+        $hello = function() use ($name) {
+            $name = "Bae";
+            echo "Hi $name";
+        };
+
+        $hello();   # Hi Bae
+        echo "<br/>";
+        echo $name; # JS
+
+        echo "<br/><br/>";
+    ?>
+
+    <hr>
+
+    <h4>Arrow Function</h4>
+
+    <?php
+
+        # fn (param) => expression;
+
+        /*
+            Function Statement = (){
+
+            }
+
+            Function Expression = ()
+        */
+
+
+        $greateNumber = fn ($n) => $n * 5;
+        echo $greateNumber(3);
+
+        echo "<br/><br/>";
+
+        # can use variable directly in arrow function.No need to use global keyword & use statement
+
+        $x = 30;
+        $add = fn($y) => $x + $y;
+        echo $add(40);  # 70
+
+        echo "<br/><br/>";
+
+        $str = "Hi there";
+        $my_func = fn($a) => $str . $a;
+        echo $my_func(" !");
+
+        echo "<br/><br/>";
+    ?>
+
+    <hr>
+
+    <h4>Named Arguments</h4>
+
+    <?php
+        function myProfile($name, $email, $age){
+            echo "$name ($age)  @$email";
+        }
+
+        // myProfile(age: 23, name: "Khun JS", email: "Khun321@gmail.com");
+        myProfile(
+            age: 23,
+            name: "Khun JS",
+            email: "Khun321@gmail.com",
+        );
+
+        echo "<br/><br/>";
+
+        function myCutyDog($numArgu = 1, $valArgu = 5){
+            echo "Number : ", $numArgu;
+            echo " ";
+            echo "Value : ", $valArgu;
+        }
+
+        myCutyDog(valArgu: 500, numArgu: 100); # Number : 100 Value : 500
+        echo "<br/><br/>";
+        
+    ?>
+
+    <hr>
+
+    <h2>OOP in PHP</h2>
+
+    <?php
+        /*
+            # Property & Method in Class Object
+
+            # Access Controll Modifier or Visibility = 
+                                                a.public = everywhere
+                                                b.private = current inside of class
+                                                c.protected = current class and inherited child class
+
+            # Pseudo Variable = $this ( use it for Property & Method )
+            # Dart Operator in PHP = -> ( use it for using Property & Method of Object ) 
+            # Other Languages use Dot Operator(.) as a object operator
+
+            # constructor = __construct()
+
+            # Class Member = static 
+            # Scope Resolution Operator or Double Colon Operator = ::
+
+            # parent
+            # final
+            # abstract  =   method and abstract method
+            # interface =   abstract method
+        */
+
+        class Animal{
+
+        }
+
+        $dog = new Animal;
+        var_dump($dog);
+
+        echo "<br/><br/>";
+
+        # Class
+
+        class Mammals{
+            public $name;
+
+            public function run(){
+                echo "$this->name is running...";
+            }
+        }
+
+        # Object
+
+        $bear = new Mammals;
+        $bear->name = "Tom Cruis";
+        $bear->run();
+
+        echo "<br/><br/>";
+
+
+        # error = Cannot access private property
+
+        class Reptiles {
+            private $name;
+
+            function kill(){
+                echo "$this->name can kill any one";
+            }
+        }
+
+        /*
+        $python = new Reptiles;
+        $python->name = "Bravo";
+        $python->kill();
+        */
+
+        echo "<br/><br/>";
+
+
+        # constructor = working immediately after building object
+
+        class Worms{
+            function __construct(){
+                echo "leeches can be biting people";
+            }
+        }
+
+        $leech = new Worms;
+
+        echo "<br/><br/>";
+
+        # Error - Call to private =  constructor in private cannot build object.
+
+        class Molluscs{
+            
+
+            private function __construct(){
+                echo "can be found anywhere in rainy season.";
+            }
+        }
+
+        // $snail = new Molluscs;
+
+
+        echo "<br/><br/>";
+
+        # static = calling directly without building object
+        # No need $this in static
+
+        class Insects{
+            static $type = "bee";
+
+            static function build(){
+                echo "Group : " . static::$type;
+            }
+        }
+
+        echo Insects::$type;    # bee
+        echo "<br/>";
+        Insects::build();       # Group : bee
+
+        echo "<br/><br/>";
+
+        # common syntax = Method-1
+
+        class Fishes{
+            private $name;
+
+            public function __construct($name){
+                $this->name = $name;
+            }
+
+            public function sleep(){
+                echo "$this->name is sleeping in water at night";
+            }
+        }
+
+        $shark = new Fishes("Long and big shark");
+        $shark->sleep();
+
+        echo "<br/><br/>";
+
+        # common syntax = Method-2
+        # Constructor Property Promotion
+
+        class MarineAnimals{
+            public function __construct(private $name){
+                
+            }
+
+            public function swimming(){
+                echo "$this->name is swimming every day";
+            }
+        }
+
+        $salmon = new MarineAnimals("A golden salmon");
+        $salmon->swimming();  
+        
+        echo "<br/><br/>";
+   
+    ?>
+
+    <hr>
+
+    <h4>Class Inheritance</h4>
+
+    <?php
+    
+        class Butterflies{
+            public function __construct(private $name){
+                
+            }
+
+            public function fly(){
+                echo "$this->name is flying in the air. ";
+            }
+        }
+
+        class Silkworm extends Butterflies {
+            public function eating(){
+                echo "And eats flowers everywhere.";
+            }
+        } 
+
+        $bravo = new Silkworm("Bravo");
+        $bravo->fly();
+        $bravo->eating();
+
+        # Bravo is flying in the air. And eats flowers everywhere.
+
+
+        echo "<br/><br/>";
+
+        # Error =  Undefined property
+
+        /*
+        class Arachnids{
+            public function __construct(private $name){
+
+            }
+
+        }  
+
+        class Spider extends Arachnids{
+            public function climbing(){
+                echo "$this->name : is climbing the rock.";
+            }
+        }
+
+        $rocky = new Spider("rocky");
+        $rocky->climbing();
+        */
+
+
+
+        # protected
+
+        class Arachnids{
+            public function __construct(protected $name){
+
+            }
+
+        }  
+
+        class Spider extends Arachnids{
+            public function climbing(){
+                echo "$this->name  is climbing the rock.";
+            }
+        }
+
+        $rocky = new Spider("rocky");
+        $rocky->climbing();
+
+        # rocky is climbing the rock.
+
+        echo "<br/><br/>";
+
+        # inheritance step by step
+
+        
+
+        class MyAnimal{
+            static function myInfo(){
+                echo "My animal";
+            }
+        }
+
+        class MyDog extends MyAnimal {
+
+        }
+
+        class MyFox extends MyDog  {
+
+        }
+
+        MyFox::myInfo();
+
+        # My animal
+
+        echo "<br/><br/>";
+
+        # overwrite & recreate = parent
+
+        class CuttyAnimal{
+            public function __construct(protected $name){
+
+            } 
+        }
+
+        class CuttyDog extends CuttyAnimal{
+            public function __construct($name, private $color){
+                parent::__construct($name);
+                $this->color = $color;
+            }
+
+            public function coolProfile(){
+                echo "$this->name has $this->color color.";
+            }
+        }
+        
+
+        $angel = new CuttyDog("Angel","black");
+        $angel->coolProfile();
+
+        echo "<br/><br/>";
+
+        # Angel has black color.
+
+
+         # Not to allow overwrite & recreate = final
+
+         # Error = Cannot override final method
+
+         /*
+
+         class CuttyHomeAnimal{
+            final public function attacking(){
+                echo "CuttyHomeAnimal is attacking his nails.";
+            }
+         }
+
+         class CuttyCat extends CuttyHomeAnimal{
+            public function attacking(){
+                echo "A cute cat is attacking his nails.";
+            }
+         }
+
+         */
+
+         echo "<br/><br/>";
+
+          # Not to allow overwrite all class = final
+
+          # error = may not inherit from final class
+
+        /*
+         final class CuttyHomeAnimal{
+            public function attacking(){
+                echo "CuttyHomeAnimal is attacking his nails.";
+            }
+         }
+
+         class CuttyCat extends CuttyHomeAnimal{
+            public function attacking(){
+                echo "A cute cat is attacking his nails.";
+            }
+         }
+         */
+
+        
+
+         echo "<br/><br/>";
+
+         # Abstract Class = abstract
+
+         /*
+
+            abstract class ParentClass {
+            abstract public function someMethod1();
+            abstract public function someMethod2($name, $color);
+            abstract public function someMethod3() : string;
+                                        }
+         
+         */
+
+
+         # error = bstract method and must therefore be declared abstract
+
+         /*
+         abstract class CuttyHomeAnimal{
+            public abstract function talk();
+            public function attacking(){
+                echo "CuttyHomeAnimal is attacking his nails.";
+            }
+         }
+
+         class CuttyCat extends CuttyHomeAnimal{
+            public function attacking(){
+                echo "A cute cat is attacking his nails.";
+            }
+         }
+
+         */
+
+         echo "<br/><br/>";
+
+
+         # Parent Class
+
+         abstract class Car {
+            public function __construct(public $name){
+
+            }
+            abstract public function intro() : string;
+         }
+
+         # Child Classes
+
+         class Audi extends Car{
+            public function intro() : string {
+                return "Choose German quaity ! I'm an $this->name!";
+            }
+         }
+
+         class Volvo extends Car {
+            public function intro() : string {
+                return "Proud to be Swedish! I'm a $this->name!";
+            }
+         }
+
+         class Citroen extends Car{
+            public function intro() : string {
+                return "French extravance! I'm a $this->name";
+            }
+         }
+
+         # Create Object From Child Classes
+
+         $audi = new Audi("Audi");
+         echo $audi->intro() . "<br/>";
+
+         $volvo = new Volvo("Volvo");
+         echo $volvo->intro() . "<br/>";
+
+         $citroen = new Citroen("Citroen");
+         echo $citroen->intro();
+
+         echo "<br><br>";
+
+         
+         abstract class MyCar{
+            public $name;
+            public function __construct($name){
+                $this->name = $name;
+            }
+            abstract public function model();
+         }
+
+         class Toyota extends MyCar {
+            public function model(){
+                echo "Best quality in Japan. I like $this->name";
+            }
+         }
+
+         class Honda extends MyCar {
+            public function model(){
+                echo "Best quality in Myanmar. I like $this->name";
+            }
+         }
+
+         class Hondai extends MyCar {
+            public function model(){
+                echo "Best quality in Korea. I like $this->name";
+            }
+         }
+
+         $toyota = new Toyota("Toyota");
+         echo $toyota->model() ."<br/>";
+
+         $honda = new Honda("Honda");
+         echo $honda->model() ."<br/>";
+
+         $hondai = new Hondai("Hondai");
+         echo $hondai->model() ."<br/>";
+
+         echo "<br><br>";
+
+
+         # Abstract method with argument ony at parent class
+
+         abstract class ParentClass {
+            abstract protected function prefixName($name);
+         }
+
+         class ChildClass extends ParentClass {
+            public function prefixName($name) {
+                if($name == "Khun Tun"){
+                    $prefix = "Mr.";
+                }elseif($name == "San Di"){
+                    $prefix = "Miss.";
+                }else{
+                    $prefix = "";
+                }
+                return "{$prefix}{$name}";
+            }
+         }
+
+         $myClass = new ChildClass;
+         echo $myClass->prefixName("Khun Tun") . "<br/>";
+         echo $myClass->prefixName("San Di");
+
+         /*
+            Mr.Khun Tun
+            Miss.San Di
+         */
+
+         echo "<br><br>";
+
+         # Abstract method with argument  at parent class and child class
+         # The child class may define optional arguments that is not in the parent's abstract method
+
+         abstract class BigClass {
+            abstract protected function sirName($name);
+         }
+
+         class SmallClass extends BigClass {
+            public function sirName($name, $separator = ".", $greet = "Dear"){
+                if($name == "Paing Tan Khun"){
+                    $nickName = "Mr";
+                }elseif($name == "Soe Pyae Tha Zin"){
+                    $nickName = "Miss";
+                }else{
+                    $nickName = "No any name";
+                }
+                return "{$greet} {$nickName}{$separator}{$name}";
+            }
+         }
+
+         $movie = new SmallClass;
+         echo $movie->sirName("Paing Tan Khun") . "<br/>";
+         echo $movie->sirName("Soe Pyae Tha Zin") . "<br/>";
+
+         /*
+            Dear Mr.Paing Tan Khun
+            Dear Miss.Soe Pyae Tha Zin
+         */
+
+         echo "<br><br>";
+
+
+         # interface = use it to build the same kind object
+
+
+         /*
+         
+         interface InterfaceName {
+            public function someMethod1();
+            public function someMethod2($name, $color);
+            public function someMethod3() : string;
+                                    }
+
+         */
+
+
+         class HomeDog {
+            public function jumping(){
+                echo "The dog is jumping";
+            }
+         }
+
+         class BigFish{
+            public function watching(){
+                echo "The big fish is watching people.";
+            }
+         }
+
+         function myApp(HomeDog $obj){
+            $obj->jumping();
+         }
+
+
+         # The dog is jumping
+         myApp(new HomeDog); 
+         # error
+        //  myApp(new BigFish);
+
+
+         echo "<br><br>";
+
+
+         interface BabyAnimal{
+            public function makeSound();
+         }
+
+         class BabyCat implements BabyAnimal {
+            public function makeSound(){
+                echo "Meow";
+            }
+         }
+
+         $animal = new BabyCat();
+         $animal->makeSound();
+
+         echo "<br><br>";
+
+         # Interface definition
+         interface OldAnimal{
+            public function sweetSound();
+         }
+
+         class OldCat implements OldAnimal {
+            public function sweetSound(){
+                echo " Meee Meow ";
+            }
+         }
+
+         class OldDog implements OldAnimal {
+            public function sweetSound(){
+                echo " Woof...Woof ";
+            }
+         }
+
+         class OldMouse implements OldAnimal {
+            public function sweetSound(){
+                echo " Squeak ";
+            }
+         }
+
+         # Create a list of animals
+
+         $cat = new OldCat();
+         $dog = new OldDog();
+         $mouse = new OldMouse();
+         $animals = [$cat,$dog,$mouse];
+
+         # Tell the animals to make a sound
+         foreach($animals as $animal){
+            $animal->sweetSound();
+         }
 
 
     ?>
