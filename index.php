@@ -2833,6 +2833,183 @@
 
     ?>
 
+    <hr>
+
+    <h2>Error handling</h2>
+
+    <h4>Error-16 in PHP</h4>
+
+    <?php
+    
+          /*
+            a. E_PRSE
+            b. E_ERROR
+            c. E_WARNING
+            d. E_NOTICE
+            e. E_STRICT
+            f. E_DEPRECATED
+            g. E_ALL
+            h.
+            i.
+            j.
+            l.
+            m.
+            n.
+          */
+
+
+          # Basic use of Exception
+
+          /*
+          function checkNumber($num){
+            if($num > 1){
+                throw new Exception("Value must be 1 or below");
+            }
+            return true;
+          }
+
+          checkNumber(2);
+          */
+
+          # Uncaught Exception: Value must be 1 or below
+
+          echo "<br/><br/>";
+
+          # try , throw , catch
+
+          function checkNum($num){
+            if($num > 1){
+                # If the exception is thrown, this text will not be shown
+                throw new Exception("Value must be 1 or below");
+            }
+            return true;
+          }
+
+          # Trigger exception in a " try " block
+
+          try{
+            checkNum(2);
+            echo "if you see this, the number is 1 or below";
+          }
+
+          # Catch exception
+
+          catch(Exception $e){
+            echo 'Message : ' . $e->getMessage();
+          }
+
+          # Message : Value must be 1 or below
+
+          echo "<br/><br/>";
+
+
+
+          # Creating a Custom Exception Class
+          # getLine() , getFile() , getMessage(), set_exception_handler() 
+
+          class customException extends Exception{
+            public function errorMessage(){
+                # error msg
+                $errorMsg = 'Error on line ' . $this->getLine() . ' in ' . $this->getFile() . ': <b>' . $this->getMessage() . '<b/> is not a valid E-mail address';
+                return $errorMsg;
+            }
+          }
+
+          $email = "khuntun777@gmail.com"; # error catching here
+
+          try{
+            if(filter_var($email, FILTER_VALIDATE_EMAIL) === FALSE){
+                throw new exception($email);
+            }
+          }catch(customException $e){
+            echo $e->errorMessage();
+          }
+
+          echo "<br/><br/>";
+
+
+          # Multiple Exceptions
+
+          class multipleCustomException extends Exception{
+            public function multiErrorMsg(){
+                $errMsg = ' Error on line ' .$this->getLine() . ' in ' . $this->getFile() . ': <b>' . $this->getMessage() . '<b/> is not a valid E-mail address';
+                return $errMsg;
+            }
+          }
+
+          $email = "justin777@gmail.com";
+
+          try{
+            if(filter_var($email,FILTER_VALIDATE_EMAIL) === FALSE){
+                throw new exception($email);
+            }elseif(strpos($email, "example") !== FALSE){
+                throw new exception("$email is an example e-mail address");
+            }
+          }catch(multipleCustomException $e){
+            echo $e->multiErrorMsg();
+          }catch(Exception $e){
+            echo $e->getMessage();
+          }
+
+          # justin777@gmail.com is an example e-mail address
+
+          echo "<br/><br/>";
+
+
+          # Re-throwing Exceptions
+
+
+          class myCustomException extends Exception{
+            public function myErrMsg(){
+                $myErrMsg = $this->getMessage() . ' is not a valid E-mail address.';
+                return $myErrMsg;
+            }
+          }
+
+          $email = "bae890@gmail.com";
+
+          try{
+            if(strpos($email, "example") !== FALSE){
+                throw new exception($email);
+            }
+          }catch(Exception $e){
+            # re-throw exception
+            throw new myCustomException($email);
+          }catch(myCustomException $e){
+            $e->myErrMsg();
+          }
+
+          echo "<br/><br/>";
+
+          # Top Level Exception Handler = without try and catch
+
+          function topCustomException($exception) {
+            echo "<b>Exception:</b>" . $exception->getMessage();
+          }
+
+          set_exception_handler('topCustomException');
+
+          throw new Exception('Uncaught Exception occured');
+
+
+          # Exception:Uncaught Exception occured
+
+          echo "<br/><br/>";
+
+
+          # Rules for exceptions
+
+          /*
+          
+            1.Code may be surrounded in a try block, to help catch potential exceptions
+            2.Each try block or "throw" must have at least one corresponding catch block
+            3.Multiple catch blocks can be used to catch different classes of exceptions
+            4.Exceptions can be thrown (or re-thrown) in a catch block within a try block
+          
+          */
+
+    ?>
+
 
 
 
