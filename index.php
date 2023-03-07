@@ -2857,8 +2857,46 @@
             n.
           */
 
+          /*
+          
+          # Strict Error
 
-          # Basic use of Exception
+          declare(strict_type=1);
+          function add(int $a,int $b){
+            echo $a + $b;
+          }
+
+          add(10,"10");
+
+
+          # hide all error 
+
+          error_reporting(0);
+
+
+
+          # define all error
+
+          error_reporting(E_ALL);
+          or 
+          error_reporting(-1);
+
+
+          # define Parse error, Fatal error, Warning error
+
+          error_reporting(E_ALL | E_ERROR | E_WARNING);
+
+
+
+          # define all error except one
+
+          error_reporting(E_ALL & ~E_NOTICE);
+          
+          
+          */
+
+
+          # Basic use of Exception Handling
 
           /*
           function checkNumber($num){
@@ -2875,7 +2913,7 @@
 
           echo "<br/><br/>";
 
-          # try , throw , catch
+          # try ,catch, new throw Exception() , finally
 
           function checkNum($num){
             if($num > 1){
@@ -3008,7 +3046,64 @@
           
           */
 
+          echo "<br/><br/>";
+
+          function errorAdd($nums){
+            if(!is_array($nums)){
+                throw new Exception("Argument must be array");
+            }
+            return array_sum($nums);
+          }
+
+          try{
+            echo errorAdd(10);
+          }catch(Exception $e){
+            $e->getMessage();
+          }
+
+          echo "<br/><br/>";
+
+
+          # finally = works with or without exception
+
+          function errorAddFinal($nums){
+            if(!is_array($nums)){
+                throw new Exception("Argument must be array");
+            }
+            return array_sum($nums);
+          }
+
+          try{
+            echo errorAddFinal(10);
+          }catch(Exception $e){
+            $e->getMessage();
+          }finally{
+            echo "Done";
+          }
+
+
+          echo "<br/><br/>";
+
+          function AddFinal($nums){
+            if(!is_array($nums)){
+                throw new Exception("Argument must be array");
+            }
+            return array_sum($nums);
+          }
+
+          try{
+            echo AddFinal([10,20]);
+          }catch(Exception $e){
+            $e->getMessage();
+          }finally{
+            echo "Done";
+          }
     ?>
+
+    <hr>
+
+
+    
 
 
 
