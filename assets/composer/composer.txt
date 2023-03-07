@@ -1,0 +1,5 @@
+composer init
+composer install
+composer require
+composer create-project
+composer dump-autoload

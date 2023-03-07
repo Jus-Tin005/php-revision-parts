@@ -1,0 +1,21 @@
+{
+    "name": "dataland/app",
+    "autoload": {
+        "psr-4": {
+            "Dataland\\App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Khun Tun"
+        }
+    ],
+    "require": {
+        "nesbot/carbon": "^2.66"
+    },
+    "autoload" : {
+        "psr-4" : {
+            "App\\" : "App/"
+        }
+    }
+}
